@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  expressapp:
+    build:
+      context: ./expressapp
+      dockerfile: Dockerfile.dev
+    ports:
+      - 80:3000
+    volumes:
+      - /expressapp/node_modules
+      - ./expressapp:/expressapp
+
+  postgresdb:
+    image: postgres
+    ports:
+      - 5400:5432
+    environment:
+      POSTGRES_PASSWORD: Galaktika89
+      POSTGRES_USER: Excel

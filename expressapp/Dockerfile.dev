@@ -1,0 +1,11 @@
+FROM alpine:latest
+
+RUN apk --update add  npm
+
+WORKDIR /expressapp
+
+COPY ./package.json .
+
+RUN npm install
+
+CMD ["npm", "start"]
