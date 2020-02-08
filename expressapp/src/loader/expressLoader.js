@@ -11,6 +11,7 @@ export default async app => {
   app.use(
     '/',
     asyncHandler(async (req, res) => {
+      console.log('fdlk');
       throw new Error('fldk');
     })
   );
