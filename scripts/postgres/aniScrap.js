@@ -25,7 +25,7 @@ const query = `query($page : Int){
         english
         native
       }
-      description(asHtml:false)
+      description(asHtml:true)
       startDate {
         year
         month
@@ -68,7 +68,7 @@ const query = `query($page : Int){
             large
             medium
           }
-          description(asHtml:false)
+          description(asHtml:true)
         }
       }
       studios(isMain:true) {
