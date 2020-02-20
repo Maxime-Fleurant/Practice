@@ -5,12 +5,22 @@ const driver = require('./db');
 module.exports = {
   schema: Joi.object({
     romajiTitle: Joi.string().required(),
-    englishTitle: Joi.string(),
-    nativeTitle: Joi.string(),
-    description: Joi.string(),
+    englishTitle: Joi.string()
+      .allow(null)
+      .allow(''),
+    nativeTitle: Joi.string()
+      .allow(null)
+      .allow(''),
+    description: Joi.string()
+      .allow(null)
+      .allow(''),
     startDate: Joi.date(),
-    endDate: Joi.date(),
-    nbEpisodes: Joi.number(),
+    endDate: Joi.date()
+      .allow(null)
+      .allow(''),
+    nbEpisodes: Joi.number()
+      .allow(null)
+      .allow(''),
     trailer: Joi.string(),
     xLargeCover: Joi.string(),
     largeCover: Joi.string(),
@@ -20,12 +30,13 @@ module.exports = {
   }),
 
   async save(inputObj) {
-    if (this.schema.validate(inputObj).error) throw new Error('Validation Error');
+    console.log(inputObj.englishTitle);
+    if (this.schema.validate(inputObj).error) throw this.schema.validate(inputObj).error;
 
     const newAnimeInput = {
       ...inputObj,
       startDate: Date.fromStandardDate(inputObj.startDate),
-      endDate: Date.fromStandardDate(inputObj.endDate),
+      endDate: inputObj.endDate ? Date.fromStandardDate(inputObj.endDate) : null,
       description: inputObj.description.replace(/<[^>]*>/g, ' ').replace(/(\r\n|\n|\r)/gm, '')
     };
 

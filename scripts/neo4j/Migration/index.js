@@ -15,9 +15,13 @@ const session = driver.session();
         'CREATE CONSTRAINT characterId ON (character:CHARACTER) ASSERT character.characterId IS UNIQUE'
       );
       tx.run('CREATE CONSTRAINT studioId ON (studio:STUDIO) ASSERT studio.studioId IS UNIQUE');
+      tx.run('CREATE CONSTRAINT studioName ON (studio:STUDIO) ASSERT studio.name IS UNIQUE');
       tx.run('CREATE CONSTRAINT genreId ON (genre:GENRE) ASSERT genre.genreId IS UNIQUE');
+      tx.run('CREATE CONSTRAINT genreName ON (genre:GENRE) ASSERT genre.name IS UNIQUE');
       tx.run('CREATE CONSTRAINT tagId ON (tag:TAG) ASSERT tag.tagId IS UNIQUE');
+      tx.run('CREATE CONSTRAINT tagName ON (tag:TAG) ASSERT tag.name IS UNIQUE');
       tx.run('CREATE CONSTRAINT themeId ON (theme:theme) ASSERT theme.themeId IS UNIQUE');
+      tx.run('CREATE CONSTRAINT themeName ON (theme:theme) ASSERT theme.name IS UNIQUE');
     });
   } finally {
     await session.close();

@@ -3,12 +3,20 @@ const driver = require('./db');
 
 module.exports = {
   schema: Joi.object({
-    firstName: Joi.string(),
-    lastName: Joi.string().allow(null),
-    nativeName: Joi.string().allow(null),
+    firstName: Joi.string()
+      .allow(null)
+      .allow(''),
+    lastName: Joi.string()
+      .allow(null)
+      .allow(''),
+    nativeName: Joi.string()
+      .allow(null)
+      .allow(''),
     largeImage: Joi.string(),
     mediumImage: Joi.string(),
     description: Joi.string()
+      .allow(null)
+      .allow('')
   }),
 
   async save(inputObj) {

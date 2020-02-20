@@ -32,6 +32,8 @@
     "bluebird": "^3.7.2",
     "joi": "^14.3.1",
     "knex": "^0.20.8",
+    "mongodb": "^3.5.3",
+    "mongoose": "^5.9.1",
     "neo4j-driver": "^4.0.1",
     "neode": "^0.3.7",
     "objection": "^2.1.2",
